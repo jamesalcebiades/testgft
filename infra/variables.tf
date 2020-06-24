@@ -33,7 +33,7 @@ variable "aks" {
 }
 
 # Variables Tag
-variable "Tags" {
+variable "tags" {
     default     = {
         dev     = "Dev"
         webapi  = "WebAPI"
