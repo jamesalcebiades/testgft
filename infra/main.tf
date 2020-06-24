@@ -1,17 +1,3 @@
-terraform {
-    required_version = ">= 0.11" 
-    backend "azurerm" {
-        storage_account_name    = "storagegft"
-        container_name          = "terraform"
-        key                     = "terraform.tfstate"
-        acess_key               = "__storagekey__"
-        features{}
-    }
-}
-# Configure the Azure Provider
-provider "azurerm" {
-   version = "~> 1.32"
-}
 # Create resource group
 resource "azurerm_resource_group" "rg_gft" {
     name        = "rs-gp-dev-001"
@@ -28,4 +14,22 @@ resource "azurerm_storage_account" "stg" {
     account_replication_type    = "GRS"
     tags                        = var.tags
 }
+
+# terraform {
+#     required_version = ">= 0.11" 
+#     backend "azurerm" {
+#         storage_account_name    = "storagegft"
+#         container_name          = "terraform"
+#         key                     = "terraform.tfstate"
+       
+#     }
+# }
+
+# Configure the Azure Provider
+provider "azurerm" {
+   version = "~> 1.32"
+}
+
+
+
 
