@@ -96,15 +96,12 @@ output "kube_config" {
   value = "${azurerm_kubernetes_cluster.aks_k2.kube_config_raw}"
 }
 
-# terraform {
-#     required_version = ">= 0.11" 
-#     backend "azurerm" {
-#         storage_account_name    = "storagegft"
-#         container_name          = "terraform"
-#         key                     = "terraform.tfstate"
-       
-#     }
-# }
+terraform {
+    required_version = ">= 0.11" 
+    backend "azurerm" {
+              
+    }
+}
 
 # Configure the Azure Provider
 provider "azurerm" {
