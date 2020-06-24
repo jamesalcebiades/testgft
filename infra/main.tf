@@ -11,7 +11,7 @@ provider "azurerm" {
 
 # Create resource group
 resource "azurerm_resource_group" "rg_gft" {
-    name        = "${var.resource_group}""${var.env}""-${var.countnumber}"
+    name        = "rs-gp-dev-001"
     location    = var.region
     tags        = var.tags
 }
