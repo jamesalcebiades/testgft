@@ -1,9 +1,11 @@
 terraform {
     required_version = ">= 0.11" 
     backend "azurerm" {
-        storage_account_name = "storagegft"
+        storage_account_name    = "storagegft"
         container_name          = "terraform"
-        key = "terraform.tfstate"
+        key                     = "terraform.tfstate"
+        acess_key               = "__storagekey__"
+        features{}
     }
 }
 # Configure the Azure Provider
