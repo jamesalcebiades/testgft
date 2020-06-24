@@ -22,7 +22,7 @@ resource "azurerm_api_management" "api_management" {
     resource_group_name = azurerm_resource_group.rg_gft.name
     publisher_name      = "GFT"
     publisher_email     = "teste@gft.com"
-    sku_name            = "devapi"
+    sku_name            = "Developer_1"
 
     policy {
         xml_content = <<XML
