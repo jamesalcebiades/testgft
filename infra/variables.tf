@@ -41,14 +41,6 @@ variable "tags" {
     }
 }
 
-#KeyVault Resource Group and KeyVaultName
-variable "keyvault_rg" {
-  type    = string
-}
-variable "keyvault_name" {
-  type    = string
-}
-
 # AKS Cluster name
 variable "cluster_name" {
   type    = string
