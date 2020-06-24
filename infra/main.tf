@@ -17,12 +17,12 @@ resource "azurerm_storage_account" "stg" {
 
 # Create API Management
 resource "azurerm_api_management" "api_management" {
-    name        = "apim-dev-001"
-    location    = var.region
+    name                = "apim-dev-001"
+    location            = var.region
     resource_group_name = azurerm_resource_group.rg_gft.name
     publisher_name      = "GFT"
     publisher_email     = "teste@gft.com"
-    sku_name            = "dev_api"
+    sku_name            = "devapi"
 
     policy {
         xml_content = <<XML
