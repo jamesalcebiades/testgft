@@ -54,10 +54,10 @@ resource "azurerm_kubernetes_cluster" "aksgft" {
         type = "SystemAssigned"
     } 
 
-    service_principal {
-        client_id     = data.azurerm_key_vault_secret.spn_id.value
-        client_secret = data.azurerm_key_vault_secret.spn_secret.value
-    }
+    # service_principal {
+    #     client_id     = data.azurerm_key_vault_secret.spn_id.value
+    #     client_secret = data.azurerm_key_vault_secret.spn_secret.value
+    # }
 
     tags = var.tags
 }
