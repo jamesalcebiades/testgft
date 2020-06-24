@@ -15,27 +15,61 @@ resource "azurerm_storage_account" "stg" {
     tags                        = var.tags
 }
 
-# Create API Management
-resource "azurerm_api_management" "api_management" {
-    name                = "apim-dev-001"
-    location            = var.region
-    resource_group_name = azurerm_resource_group.rg_gft.name
-    publisher_name      = "GFT"
-    publisher_email     = "teste@gft.com"
-    sku_name            = "Developer_1"
+# # Create API Management
+# resource "azurerm_api_management" "api_management" {
+#     name                = "apim-dev-001"
+#     location            = var.region
+#     resource_group_name = azurerm_resource_group.rg_gft.name
+#     publisher_name      = "GFT"
+#     publisher_email     = "teste@gft.com"
+#     sku_name            = "Developer_1"
 
-    policy {
-        xml_content = <<XML
-            <policies>
-            <inbound />
-            <backend />
-            <outbound />
-            <on-error />
-            </policies>
-        XML
+#     policy {
+#         xml_content = <<XML
+#             <policies>
+#             <inbound />
+#             <backend />
+#             <outbound />
+#             <on-error />
+#             </policies>
+#         XML
 
+#     }
+# }
+
+# Create AKS
+resource "azurerm_kubernetes_cluster" "aksgft" {
+    name                = var.cluster_name
+     location            = var.region
+     resource_group_name = azurerm_resource_group.rg_gft.name
+     dns_prefix          = var.dns_name
+
+     default_node_pool {
+         name           = "default"
+         node_count     = 1
+         vm_size        = "Standard_D2_v2"
+     }
+
+    identity {
+        type = "SystemAssigned"
+    } 
+
+    service_principal {
+        client_id     = data.azurerm_key_vault_secret.spn_id.value
+        client_secret = data.azurerm_key_vault_secret.spn_secret.value
     }
+
+    tags = var.tags
 }
+output "client_certificate" {
+  value = azurerm_kubernetes_cluster.aksgft.kube_config.0.client_certificate
+}
+
+output "kube_config" {
+  value = azurerm_kubernetes_cluster.aksgft.kube_config_raw
+}
+
+
 
 # # Create AKS
 # resource "azurerm_kubernetes_clusters" "aks_gft" {
