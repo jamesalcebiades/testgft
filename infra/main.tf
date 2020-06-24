@@ -96,12 +96,12 @@ resource "azurerm_api_management" "api_management" {
 #   value = "${azurerm_kubernetes_cluster.aks_k2.kube_config_raw}"
 # }
 
-terraform {
-    required_version = ">= 0.11" 
-    backend "azurerm" {
+# terraform {
+#     required_version = ">= 0.11" 
+#     backend "azurerm" {
               
-    }
-}
+#     }
+# }
 
 # Configure the Azure Provider
 provider "azurerm" {
