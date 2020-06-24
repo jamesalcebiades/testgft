@@ -9,6 +9,16 @@ provider "azurerm" {
    version = "~> 1.32"
 }
 
+# Create storage account
+resource "azurerm_storage_account" "stg" {
+    name    = "storagegft"
+    resource_group_name         = azurerm_resource_group.rg_gft.name
+    location                    = var.region
+    account_tier                = "Standard"
+    account_replication_type    = "GRS"
+    tags                        = var.tags
+}
+
 # Create resource group
 resource "azurerm_resource_group" "rg_gft" {
     name        = "rs-gp-dev-001"
