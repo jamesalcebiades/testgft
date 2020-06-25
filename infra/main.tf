@@ -8,3 +8,13 @@ resource "azurerm_resource_group" "rggft" {
     location = var.region
     tags = var.tags
 }
+
+# Create storage account
+resource "azurerm_storage_account" "stgft" {
+    name    = "storagegft"
+    resource_group_name         = local.resource_group_name
+    location                    = var.region
+    account_tier                = "Standard"
+    account_replication_type    = "GRS"
+    tags                        = var.tags
+}
