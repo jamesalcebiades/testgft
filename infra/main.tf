@@ -1,5 +1,13 @@
+provider "azurerm" {
+  version = "~> 2.15"
+}
+
 locals {
+    # Name resource group
     resource_group_name = "${var.resource_group}-${var.env}-${var.countnumber}"
+
+    # Name API Management
+    name_api            = "${var.apim}-${var.env}-${var.countnumber}"
 }
 
 # Create resource Group
@@ -18,3 +26,5 @@ resource "azurerm_storage_account" "stgft" {
     account_replication_type    = "GRS"
     tags                        = var.tags
 }
+
+# Create API Management
