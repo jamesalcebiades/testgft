@@ -32,6 +32,12 @@ variable "aks" {
     default = "aks"
 }
 
+# admin password
+variable "admin_username" {
+    type    = string
+    default = "azureuser"
+}
+
 # Variables Tag
 variable "tags" {
     default     = {
