@@ -43,9 +43,7 @@ resource "azurerm_kubernetes_cluster" "aksgft" {
 
     default_node_pool {
         name            = "default"
-        node_count      = 2
-        min_count       = 2
-        max_count       = 3
+        node_count      = 1
         vm_size         = "Standard_D2_v2"
     }
 
