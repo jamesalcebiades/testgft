@@ -18,14 +18,15 @@ resource "azurerm_resource_group" "rggft" {
     tags = var.tags
 }
 
-# Create storage account
-resource "azurerm_storage_account" "stgft" {
-    name    = "storagegft"
-    resource_group_name         = local.resource_group_name
-    location                    = var.region
-    account_tier                = "Standard"
-    account_replication_type    = "GRS"
-    tags                        = var.tags
-}
-
 # Create API Management
+resource "azurerm_api_management" "apigft" {
+    name                = name_api
+    location            = var.region
+    resource_group_name = resource_group
+    publisher_name      = "GFT"
+    publisher_email     = "test@gft.com"
+
+    sku_name            = "gft_1"
+
+    tags                = var.tags
+}
