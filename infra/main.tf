@@ -11,12 +11,12 @@ locals {
     name_api            = "${var.apim}-${var.env}-${var.countnumber}"
 }
 
-# Create resource Group
-resource "azurerm_resource_group" "rggft" {
-    name = local.resource_group_name
-    location = var.region
-    tags = var.tags
-}
+# # Create resource Group
+# resource "azurerm_resource_group" "rggft" {
+#     name = local.resource_group_name
+#     location = var.region
+#     tags = var.tags
+# }
 
 # Create API Management
 resource "azurerm_api_management" "apigft" {
