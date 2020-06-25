@@ -26,7 +26,9 @@ resource "azurerm_api_management" "apigft" {
     publisher_name      = "GFT"
     publisher_email     = "test@gft.com"
 
-    sku_name            = "gft_1"
+    sku_name            = "Developer_1"
 
     tags                = var.tags
 }
+
+# Create AKS
