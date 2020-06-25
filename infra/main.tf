@@ -20,9 +20,9 @@ resource "azurerm_resource_group" "rggft" {
 
 # Create API Management
 resource "azurerm_api_management" "apigft" {
-    name                = name_api
+    name                = local.name_api
     location            = var.region
-    resource_group_name = resource_group
+    resource_group_name = local.resource_group_name
     publisher_name      = "GFT"
     publisher_email     = "test@gft.com"
 
