@@ -3,8 +3,5 @@ terraform {
   required_providers {
     azurerm = "~> 2.15"
   }
-  backend "azurerm" {
-      features{}
-  }
   
 }
