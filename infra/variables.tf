@@ -11,7 +11,7 @@ variable "countnumber" {
 #  Resource Group Name
 variable "resource_group" {
   type    = string
-  default = "rs-gp-"
+  default = "rs-gp"
 }
 
 # Azure region default
@@ -59,6 +59,15 @@ variable "kubernetes_version" {
   default = "1.14.3"
 }
 
+variable "keyvault_rg" {
+  type      = string
+  default   = azurerm_resource_group.rg_gft.name
+}
+variable "keyvault_name" {
+  type  = string
+  name  = 
+}
+
 #AKS Agent pools
 variable "agent_pools" {
   default = [
@@ -80,21 +89,21 @@ variable "admin_username" {
 
 # Source´s
 
-# data "azurerm_key_vault" "terraform_vault" {
-#   name                = var.keyvault_name
-#   resource_group_name = var.keyvault_rg
-# }
+data "azurerm_key_vault" "terraform_vault" {
+  name                = var.keyvault_name
+  resource_group_name = var.keyvault_rg
+}
 
-# data "azurerm_key_vault_secret" "ssh_public_key" {
-#   name         = "LinuxSSHPubKey"
-#   key_vault_id = data.azurerm_key_vault.terraform_vault.id
-# }
+data "azurerm_key_vault_secret" "ssh_public_key" {
+  name         = "LinuxSSHPubKey"
+  key_vault_id = data.azurerm_key_vault.terraform_vault.id
+}
 
-# data "azurerm_key_vault_secret" "spn_id" {
-#   name         = "spn-id"
-#   key_vault_id = data.azurerm_key_vault.terraform_vault.id
-# }
-# data "azurerm_key_vault_secret" "spn_secret" {
-#   name         = "spn-secret"
-#   key_vault_id = data.azurerm_key_vault.terraform_vault.id
-# }
+data "azurerm_key_vault_secret" "spn_id" {
+  name         = "spn-id"
+  key_vault_id = data.azurerm_key_vault.terraform_vault.id
+}
+data "azurerm_key_vault_secret" "spn_secret" {
+  name         = "spn-secret"
+  key_vault_id = data.azurerm_key_vault.terraform_vault.id
+}
