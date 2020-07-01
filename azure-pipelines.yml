@@ -1,4 +1,16 @@
 # Starter pipeline
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'Pay-As-You-Go(bba12a48-76de-4498-b0bf-77e7ce1d2b58)'
+    subscriptionId: 'bba12a48-76de-4498-b0bf-77e7ce1d2b58'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: '$(resource_group)'
+    location: '$(local)'
+    templateLocation: 'Linked artifact'
+    csmFile: '/infra'
+    deploymentMode: 'Incremental'
+    deploymentName: 'ResourceGFT'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
